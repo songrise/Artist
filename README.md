@@ -8,4 +8,4 @@ Artist is a training-free text-driven image stylization method. You give an imag
 **No** need to train, **no** need to download many ControNets or LoRAs. Just use a pretrained Stable Diffusion.
 
 ## Code Release
-We promise to release the code (probably with a HuggingFace demo) no later than August.
+We promise to release the code (probably with a HuggingFace demo) no later than end of August.
