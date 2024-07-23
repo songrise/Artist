@@ -1,0 +1,27 @@
+[
+    {
+        "image_path": "data/example/1.png",
+        "source_prompt": "",
+        "target_prompt": "A B&W pencil sketch, detailed cross-hatching"
+    },
+    {
+        "image_path": "data/example/2.png",
+        "source_prompt": "",
+        "target_prompt": "American comic, western style"
+    },
+    {
+        "image_path": "data/example/3.png",
+        "source_prompt": "",
+        "target_prompt": "Starry Night style painting by Van Gogh"
+    },
+    {
+        "image_path": "data/example/4.png",
+        "source_prompt": "",
+        "target_prompt": "Cubism painting, detailed."
+    },
+    {
+        "image_path": "data/example/5.png",
+        "source_prompt": "",
+        "target_prompt": "painting by Edvard Munch, The Scream"
+    }
+]
