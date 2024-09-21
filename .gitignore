@@ -17,7 +17,6 @@ nohup.out
 
 .autodl
 .vscode
-*.jpg
 *.jpeg
 *.ckpt
 *.pt
