@@ -467,23 +467,6 @@ def style_image_with_inversion(
 
 if __name__ == "__main__":
 
-    # Load a pipeline
-    pipe = StableDiffusionPipeline.from_pretrained(
-        "stabilityai/stable-diffusion-2-1-base"
-    ).to(device)
-
-    # pipe = DiffusionPipeline.from_pretrained(
-    #     # "playgroundai/playground-v2-1024px-aesthetic",
-    #     torch_dtype=torch.float16,
-    #     use_safetensors=True,
-    #     add_watermarker=False,
-    #     variant="fp16",
-    # )
-    # pipe.to("cuda")
-
-    # Set up a DDIM scheduler
-    pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
-
     parser = argparse.ArgumentParser(description="Stable Diffusion with OmegaConf")
     parser.add_argument(
         "--config", type=str, default="config.yaml", help="Path to the config file"
@@ -491,7 +474,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--mode",
         type=str,
-        default="dataset",
+        default="app",
         choices=["dataset", "cli", "app"],
         help="Path to the config file",
     )
@@ -504,11 +487,34 @@ if __name__ == "__main__":
         default="an impressionist painting",
         help="Stylization prompt",
     )
-    # mode = "single_control_content"
+
     args = parser.parse_args()
     config_dir = args.config
     mode = args.mode
-    # mode = "dataset"
+
+    cfg = OmegaConf.load(config_dir)
+    args = parser.parse_args()
+    config_dir = args.config
+    cfg = OmegaConf.load(config_dir)
+
+    # Load a pipeline
+    if cfg.model == "sd":
+        pipe = StableDiffusionPipeline.from_pretrained(
+            "stabilityai/stable-diffusion-2-1-base"
+        ).to(device)
+    elif cfg.model == "playground":
+        pipe = DiffusionPipeline.from_pretrained(
+            "playgroundai/playground-v2-1024px-aesthetic",
+            torch_dtype=torch.float16,
+            use_safetensors=True,
+            add_watermarker=False,
+            variant="fp16",
+        )
+        pipe.to("cuda")
+
+    # Set up a DDIM scheduler
+    pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
+
     out_name = ["content_delegation", "style_delegation", "style_out"]
 
     if mode == "dataset":

@@ -9,6 +9,8 @@ _Artist_ is a training-free text-driven image stylization method. You give an im
 **No** need to train, **no** need to download any ControNets or LoRAs. Just use a pretrained Stable Diffusion.
 
 ## Update
+:fire:Sep 21. Add config file for playground-v2 (experimental).  
+
 :fire:Jul 22. The paper and inference code is released.  
 
 :fire:Jul 30. Updated [huggingface demo](https://huggingface.co/spaces/fffiloni/Artist), thanks for `fffiloni`!
@@ -39,8 +41,15 @@ Notice that for some input image you may need to adjust the parameters to have t
 You can also run the following command to stylize an image in the command line:
 
 ```
-python injection_main.py --mode cli --image_dir data/example/1.png --prompt "A B&W pencil sketch, detailed cross-hatching --config example_config.yaml
+python injection_main.py --mode cli --image_dir data/example/1.png --prompt "A B&W pencil sketch, detailed cross-hatching" --config example_config.yaml
 ```
+
+### [Experimental] Using Playground-v2 
+Aside from the Stable Diffusino model 2.1, we now provide a config file for the [playground-v2 model](https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic), located in ` ./example_config_playground.yaml`. Note that this feature is still experimental. Compared with SD 2.1, it can have better performance on some image/prompt pairs, but it may also have worse performance on some other pairs. Some good examples are shown below:
+
+![playground](asset/fig_playground.jpg)
+
+
 
 ## Citation
 ```
